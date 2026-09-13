@@ -1,0 +1,8 @@
+{
+  "name": "چایخانه حرم امام رضا (ع)",
+  "description": "سامانه ثبت‌نام خدمتگزاری چایخانه حرم مطهر حضرت رضا (ع)",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

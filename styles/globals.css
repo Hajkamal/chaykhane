@@ -22,6 +22,8 @@
   --radius-sm: 8px;
   --shadow: 0 2px 16px rgba(0,0,0,0.07);
   --shadow-md: 0 4px 24px rgba(0,0,0,0.10);
+  --bg: #fdfaf3;
+  --coral: #c0392b;
 }
 
 html { direction: rtl; font-family: 'Vazirmatn', sans-serif; background: var(--cream); color: var(--text); }
@@ -242,3 +244,76 @@ button { font-family: 'Vazirmatn', sans-serif; cursor: pointer; border: none; ou
   .radio-group { flex-direction: column; }
   .round-stats { gap: 0; }
 }
+
+/* ── ADMIN & UTILITY STYLES ── */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  box-shadow: var(--shadow);
+}
+
+.btn-primary {
+  width: 100%;
+  background: linear-gradient(135deg, var(--green) 0%, var(--green-mid) 100%);
+  color: #fff;
+  padding: 11px 18px;
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  transition: opacity 0.2s, transform 0.1s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.btn-primary:hover { opacity: 0.92; }
+.btn-primary:active { transform: scale(0.99); }
+.btn-primary:disabled { opacity: 0.6; cursor: not-allowed; }
+
+.btn-secondary {
+  background: #fdfcf8;
+  color: var(--text);
+  border: 1.5px solid var(--border);
+  padding: 9px 14px;
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.btn-secondary:hover { background: #f5f0e1; border-color: var(--gold-mid); }
+
+.btn-danger {
+  background: #fdecea;
+  color: #c0392b;
+  border: 1.5px solid rgba(192, 57, 43, 0.3);
+  padding: 9px 14px;
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.btn-danger:hover { background: #fcd7d3; }
+
+.msg {
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+}
+.msg-error { background: #fdecea; color: #c0392b; border: 1px solid rgba(192, 57, 43, 0.2); }
+.msg-success { background: var(--green-light); color: var(--green); border: 1px solid var(--green-mid); }
+.msg-info { background: #fff3cd; color: #856404; border: 1px solid #ffc107; }
+
