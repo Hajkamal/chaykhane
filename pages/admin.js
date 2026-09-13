@@ -816,73 +816,183 @@ export default function Admin() {
               )}
 
               {filteredRegs.length > 0 && (
-                <div style={{ background: '#fff', borderRadius: 16, border: '1.5px solid var(--border)', overflow: 'hidden', boxShadow: 'var(--shadow-sm)' }}>
-                  <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'right', fontSize: '0.85rem' }}>
-                    <thead>
-                      <tr style={{ background: 'var(--surface-alt)', borderBottom: '1.5px solid var(--border)', color: 'var(--text-muted)' }}>
-                        <th style={{ padding: '12px 14px' }}>ردیف</th>
-                        <th style={{ padding: '12px 14px' }}>کد پیگیری</th>
-                        <th style={{ padding: '12px 14px' }}>نام و نام خانوادگی</th>
-                        <th style={{ padding: '12px 14px' }}>کد ملی</th>
-                        <th style={{ padding: '12px 14px' }}>شماره همراه</th>
-                        <th style={{ padding: '12px 14px' }}>منطقه در میناب</th>
-                        <th style={{ padding: '12px 14px' }}>مهارت</th>
-                        <th style={{ padding: '12px 14px' }}>وضعیت</th>
-                        <th style={{ padding: '12px 14px', textAlign: 'center' }}>عملیات</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {filteredRegs.map((reg, index) => (
-                        <tr key={reg.id} style={{ borderBottom: '1px solid var(--border-subtle)' }}>
-                          <td style={{ padding: '12px 14px', color: 'var(--text-light)' }}>{index + 1}</td>
-                          <td style={{ padding: '12px 14px', fontWeight: 700, direction: 'ltr', textAlign: 'right', color: 'var(--primary)' }}>
-                            {reg.tracking_code || '-'}
-                          </td>
-                          <td style={{ padding: '12px 14px', fontWeight: 700 }}>{reg.full_name}</td>
-                          <td style={{ padding: '12px 14px', direction: 'ltr', textAlign: 'right' }}>{reg.national_id}</td>
-                          <td style={{ padding: '12px 14px', direction: 'ltr', textAlign: 'right' }}>{reg.phone}</td>
-                          <td style={{ padding: '12px 14px' }}>{reg.neighborhood || reg.city || 'میناب'}</td>
-                          <td style={{ padding: '12px 14px', color: 'var(--text-muted)', fontSize: '0.78rem' }}>{reg.skill || 'عمومی'}</td>
-                          <td style={{ padding: '12px 14px' }}>
-                            <select
-                              value={reg.status || 'تایید شده'}
-                              onChange={e => updateRegStatus(reg.id, e.target.value)}
-                              style={{
-                                padding: '3px 8px',
-                                borderRadius: 6,
-                                fontSize: '0.78rem',
-                                fontWeight: 700,
-                                background: reg.status === 'تایید شده' ? '#d1fae5' : '#fef3c7',
-                                color: reg.status === 'تایید شده' ? '#065f46' : '#92400e',
-                                border: '1px solid #d1d5db'
-                              }}
-                            >
-                              <option value="تایید شده">تایید شده</option>
-                              <option value="در انتظار بررسی">در انتظار بررسی</option>
-                              <option value="لیست رزرو">لیست رزرو</option>
-                            </select>
-                          </td>
-                          <td style={{ padding: '12px 14px', textAlign: 'center' }}>
-                            <button
-                              onClick={() => deleteReg(reg.id)}
-                              style={{
-                                background: '#fee2e2',
-                                color: 'var(--danger)',
-                                border: 'none',
-                                borderRadius: 6,
-                                padding: '4px 8px',
-                                fontSize: '0.75rem',
-                                cursor: 'pointer'
-                              }}
-                            >
-                              حذف
-                            </button>
-                          </td>
+                <>
+                  {/* Desktop Table */}
+                  <div className="admin-table-desktop" style={{ background: '#fff', borderRadius: 16, border: '1.5px solid var(--border)', overflow: 'hidden', boxShadow: 'var(--shadow-sm)' }}>
+                    <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'right', fontSize: '0.85rem' }}>
+                      <thead>
+                        <tr style={{ background: 'var(--surface-alt)', borderBottom: '1.5px solid var(--border)', color: 'var(--text-muted)' }}>
+                          <th style={{ padding: '12px 14px' }}>ردیف</th>
+                          <th style={{ padding: '12px 14px' }}>کد پیگیری</th>
+                          <th style={{ padding: '12px 14px' }}>نام و نام خانوادگی</th>
+                          <th style={{ padding: '12px 14px' }}>کد ملی</th>
+                          <th style={{ padding: '12px 14px' }}>شماره همراه</th>
+                          <th style={{ padding: '12px 14px' }}>منطقه در میناب</th>
+                          <th style={{ padding: '12px 14px' }}>مهارت</th>
+                          <th style={{ padding: '12px 14px' }}>وضعیت</th>
+                          <th style={{ padding: '12px 14px', textAlign: 'center' }}>عملیات</th>
                         </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
+                      </thead>
+                      <tbody>
+                        {filteredRegs.map((reg, index) => (
+                          <tr key={reg.id} style={{ borderBottom: '1px solid var(--border-subtle)' }}>
+                            <td style={{ padding: '12px 14px', color: 'var(--text-light)' }}>{index + 1}</td>
+                            <td style={{ padding: '12px 14px', fontWeight: 700, direction: 'ltr', textAlign: 'right', color: 'var(--primary)' }}>
+                              {reg.tracking_code || '-'}
+                            </td>
+                            <td style={{ padding: '12px 14px', fontWeight: 700 }}>{reg.full_name}</td>
+                            <td style={{ padding: '12px 14px', direction: 'ltr', textAlign: 'right' }}>{reg.national_id}</td>
+                            <td style={{ padding: '12px 14px', direction: 'ltr', textAlign: 'right' }}>{reg.phone}</td>
+                            <td style={{ padding: '12px 14px' }}>{reg.neighborhood || reg.city || 'میناب'}</td>
+                            <td style={{ padding: '12px 14px', color: 'var(--text-muted)', fontSize: '0.78rem' }}>{reg.skill || 'عمومی'}</td>
+                            <td style={{ padding: '12px 14px' }}>
+                              <select
+                                value={reg.status || 'تایید شده'}
+                                onChange={e => updateRegStatus(reg.id, e.target.value)}
+                                style={{
+                                  padding: '3px 8px',
+                                  borderRadius: 6,
+                                  fontSize: '0.78rem',
+                                  fontWeight: 700,
+                                  background: reg.status === 'تایید شده' ? '#d1fae5' : '#fef3c7',
+                                  color: reg.status === 'تایید شده' ? '#065f46' : '#92400e',
+                                  border: '1px solid #d1d5db'
+                                }}
+                              >
+                                <option value="تایید شده">تایید شده</option>
+                                <option value="در انتظار بررسی">در انتظار بررسی</option>
+                                <option value="لیست رزرو">لیست رزرو</option>
+                              </select>
+                            </td>
+                            <td style={{ padding: '12px 14px', textAlign: 'center' }}>
+                              <button
+                                onClick={() => deleteReg(reg.id)}
+                                style={{
+                                  background: '#fee2e2',
+                                  color: 'var(--danger)',
+                                  border: 'none',
+                                  borderRadius: 6,
+                                  padding: '4px 8px',
+                                  fontSize: '0.75rem',
+                                  cursor: 'pointer'
+                                }}
+                              >
+                                حذف
+                              </button>
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+
+                  {/* Mobile Cards for Registrations */}
+                  <div className="admin-cards-mobile">
+                    {filteredRegs.map((reg, index) => (
+                      <div
+                        key={reg.id}
+                        style={{
+                          background: '#fff',
+                          border: '1.5px solid var(--border)',
+                          borderRadius: 14,
+                          padding: '1rem',
+                          boxShadow: 'var(--shadow-sm)'
+                        }}
+                      >
+                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 6 }}>
+                          <div>
+                            <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+                              <span style={{ fontSize: '0.74rem', color: 'var(--text-light)', fontWeight: 700 }}>#{index + 1}</span>
+                              <h4 style={{ fontSize: '0.98rem', fontWeight: 800, color: 'var(--primary-dark)' }}>{reg.full_name}</h4>
+                            </div>
+                            <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>{reg.neighborhood || reg.city || 'شهرستان میناب'}</span>
+                          </div>
+                          <span
+                            style={{
+                              background: 'var(--gold-subtle)',
+                              color: 'var(--gold-dark)',
+                              border: '1px solid var(--gold-border)',
+                              padding: '2px 8px',
+                              borderRadius: 6,
+                              fontSize: '0.72rem',
+                              fontWeight: 700,
+                              direction: 'ltr'
+                            }}
+                          >
+                            {reg.tracking_code || '-'}
+                          </span>
+                        </div>
+
+                        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 6, fontSize: '0.78rem', background: '#fdfbf7', padding: '0.65rem 0.75rem', borderRadius: 8, margin: '0.6rem 0' }}>
+                          <div>
+                            <span style={{ color: 'var(--text-light)', fontSize: '0.68rem', display: 'block' }}>تلفن تماس (تماس فوری):</span>
+                            <a href={`tel:${reg.phone}`} style={{ fontWeight: 700, direction: 'ltr', textAlign: 'right', display: 'inline-block', color: 'var(--primary)', textDecoration: 'underline' }}>
+                              {reg.phone}
+                            </a>
+                          </div>
+                          <div>
+                            <span style={{ color: 'var(--text-light)', fontSize: '0.68rem', display: 'block' }}>کد ملی:</span>
+                            <span style={{ fontWeight: 700, direction: 'ltr', textAlign: 'right', display: 'inline-block' }}>
+                              {reg.national_id}
+                            </span>
+                          </div>
+                          {reg.age && (
+                            <div>
+                              <span style={{ color: 'var(--text-light)', fontSize: '0.68rem', display: 'block' }}>سن:</span>
+                              <span style={{ fontWeight: 600 }}>{reg.age} سال</span>
+                            </div>
+                          )}
+                          <div>
+                            <span style={{ color: 'var(--text-light)', fontSize: '0.68rem', display: 'block' }}>مهارت:</span>
+                            <span style={{ fontWeight: 600 }}>{reg.skill || 'عمومی'}</span>
+                          </div>
+                        </div>
+
+                        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 8, marginTop: 8, paddingTop: 8, borderTop: '1px solid var(--border-subtle)' }}>
+                          <select
+                            value={reg.status || 'تایید شده'}
+                            onChange={e => updateRegStatus(reg.id, e.target.value)}
+                            style={{
+                              flex: 1,
+                              padding: '6px 10px',
+                              borderRadius: 8,
+                              fontSize: '0.8rem',
+                              fontWeight: 700,
+                              background: reg.status === 'تایید شده' ? '#d1fae5' : '#fef3c7',
+                              color: reg.status === 'تایید شده' ? '#065f46' : '#92400e',
+                              border: '1px solid #d1d5db',
+                              minHeight: 38
+                            }}
+                          >
+                            <option value="تایید شده">تایید شده</option>
+                            <option value="در انتظار بررسی">در انتظار بررسی</option>
+                            <option value="لیست رزرو">لیست رزرو</option>
+                          </select>
+
+                          <button
+                            onClick={() => deleteReg(reg.id)}
+                            style={{
+                              background: '#fee2e2',
+                              color: 'var(--danger)',
+                              border: '1px solid #fecaca',
+                              borderRadius: 8,
+                              padding: '6px 12px',
+                              fontSize: '0.8rem',
+                              fontWeight: 700,
+                              minHeight: 38,
+                              display: 'inline-flex',
+                              alignItems: 'center',
+                              gap: 4
+                            }}
+                          >
+                            <Trash2 size={13} />
+                            <span>حذف</span>
+                          </button>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </>
               )}
             </div>
           )}

@@ -1028,32 +1028,461 @@ input, select, textarea {
   margin-top: 0.5rem;
 }
 
+/* ── UTILITY RESPONSIVE CLASSES ── */
+.mobile-only {
+  display: none !important;
+}
+
+.desktop-only {
+  display: inline !important;
+}
+
+.admin-table-desktop {
+  display: block;
+}
+
+.admin-cards-mobile {
+  display: none;
+}
+
+.mobile-sheet-handle {
+  display: none;
+}
+
 /* Responsive */
 @media (max-width: 640px) {
-  .hero-title {
-    font-size: 1.65rem;
+  .desktop-only {
+    display: none !important;
   }
+  .mobile-only {
+    display: inline !important;
+  }
+
+  .admin-table-desktop {
+    display: none !important;
+  }
+
+  .admin-cards-mobile {
+    display: flex !important;
+    flex-direction: column;
+    gap: 0.85rem;
+  }
+
+  .mobile-sheet-handle {
+    display: block !important;
+    width: 44px;
+    height: 5px;
+    background: #d1d5db;
+    border-radius: 9999px;
+    margin: -0.25rem auto 0.85rem;
+  }
+
+  .max-content {
+    padding: 0 0.85rem;
+  }
+
+  /* Header mobile */
+  .header-glass {
+    padding: 0.4rem 0;
+  }
+
+  .header-row {
+    padding: 0.4rem 0;
+    gap: 0.4rem;
+  }
+
+  .brand-wrapper {
+    gap: 0.55rem;
+  }
+
+  .brand-icon-box {
+    width: 36px;
+    height: 36px;
+    font-size: 16px;
+    border-radius: 9px;
+  }
+
+  .brand-title-box h1 {
+    font-size: 0.88rem;
+    gap: 0.25rem;
+    flex-wrap: wrap;
+  }
+
+  .brand-minab-tag {
+    font-size: 0.64rem;
+    padding: 1px 5px;
+  }
+
+  .brand-sub {
+    font-size: 0.68rem;
+  }
+
+  .nav-actions {
+    gap: 0.3rem;
+  }
+
+  .btn-header-action {
+    padding: 0.35rem 0.65rem;
+    font-size: 0.74rem;
+    gap: 0.3rem;
+    min-height: 36px;
+  }
+
+  /* Announcement Bar */
+  .announcement-bar {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.76rem;
+  }
+
+  .announcement-inner {
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+
+  .announcement-tag {
+    font-size: 0.65rem;
+    padding: 1px 6px;
+  }
+
+  /* Hero Section */
+  .hero-wrapper {
+    padding: 1.75rem 0.85rem 2.25rem;
+  }
+
+  .hero-pill-badge {
+    font-size: 0.72rem;
+    padding: 0.25rem 0.75rem;
+    margin-bottom: 0.85rem;
+    max-width: 100%;
+    line-height: 1.4;
+  }
+
+  .hero-title {
+    font-size: 1.35rem;
+    line-height: 1.4;
+    margin-bottom: 0.65rem;
+  }
+
+  .hero-desc {
+    font-size: 0.82rem;
+    line-height: 1.65;
+    margin-bottom: 1.25rem;
+  }
+
   .hero-metrics-bar {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.35rem;
+    padding: 0.65rem 0.4rem;
+    border-radius: var(--radius-md);
+  }
+
+  .hero-metric-val {
+    font-size: 1.1rem;
+  }
+
+  .hero-metric-label {
+    font-size: 0.66rem;
+  }
+
+  /* Navigation Tabs */
+  .tabs-container {
+    margin: 1.25rem auto 1rem;
+    padding: 0.25rem;
+    border-radius: 12px;
+    width: 100%;
+    gap: 0.25rem;
+  }
+
+  .tab-btn {
+    padding: 0.55rem 0.35rem;
+    font-size: 0.76rem;
+    gap: 0.25rem;
+    min-height: 42px;
+    border-radius: 9px;
+  }
+
+  .tab-btn svg {
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+  }
+
+  /* Section Headings */
+  .section-heading {
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+  }
+
+  .section-title {
+    font-size: 1rem;
+  }
+
+  .section-count-badge {
+    font-size: 0.72rem;
+    padding: 2px 6px;
+  }
+
+  /* Round Cards */
+  .round-card-modern {
+    padding: 1.15rem 0.95rem;
+    border-radius: 14px;
+  }
+
+  .round-card-modern::before {
+    width: 4px;
+  }
+
+  .round-top-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.65rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .round-heading {
+    font-size: 1.05rem;
+  }
+
+  .badge-status {
+    align-self: flex-start;
+    font-size: 0.72rem;
+    padding: 0.25rem 0.65rem;
+  }
+
+  .round-meta-tags {
+    gap: 0.35rem;
+  }
+
+  .meta-pill {
+    font-size: 0.74rem;
+    padding: 0.2rem 0.5rem;
+  }
+
+  .round-desc-text {
+    font-size: 0.8rem;
+    line-height: 1.65;
+    padding: 0.6rem 0.75rem;
+    margin: 0.6rem 0;
+  }
+
+  .round-minab-highlight {
+    font-size: 0.74rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .capacity-box {
+    padding: 0.75rem 0.85rem;
+    margin-bottom: 1rem;
+  }
+
+  .capacity-nums-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.3rem;
+    font-size: 0.78rem;
+  }
+
+  .round-action-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.65rem;
+    padding-top: 0.25rem;
+  }
+
+  .btn-open-register {
+    width: 100%;
+    padding: 0.85rem 1rem;
+    font-size: 0.92rem;
+    min-height: 48px;
+  }
+
+  /* Registration Modal as Bottom Sheet on Mobile */
+  .reg-modal-backdrop {
+    align-items: flex-end;
+    padding: 0;
+  }
+
+  .reg-modal-box {
+    max-width: 100%;
+    border-radius: 20px 20px 0 0;
+    max-height: 92vh;
+    padding: 1.25rem 1rem 2rem;
+    border-bottom: none;
+    border-left: none;
+    border-right: none;
+    animation: sheetSlideUp 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  @keyframes sheetSlideUp {
+    from { transform: translateY(100%); }
+    to { transform: translateY(0); }
+  }
+
+  .reg-modal-header {
+    padding-bottom: 0.85rem;
+    margin-bottom: 1rem;
+  }
+
+  .reg-modal-title {
+    font-size: 1.1rem;
+  }
+
+  .reg-modal-sub {
+    font-size: 0.76rem;
+  }
+
+  .btn-modal-close {
+    width: 36px;
+    height: 36px;
+    min-width: 36px;
+  }
+
+  .form-grid-modern {
+    grid-template-columns: 1fr;
+    gap: 0.9rem;
+    margin-bottom: 1rem;
+  }
+
+  /* 16px font-size to prevent iOS Safari auto-zooming */
+  .field-input, .field-select {
+    font-size: 16px;
+    padding: 0.75rem 0.85rem;
+    min-height: 46px;
+  }
+
+  .field-label {
+    font-size: 0.82rem;
+  }
+
+  .field-hint {
+    font-size: 0.7rem;
+  }
+
+  .segmented-grid {
     grid-template-columns: 1fr;
     gap: 0.5rem;
   }
-  .form-grid-modern {
-    grid-template-columns: 1fr;
+
+  .segmented-card {
+    padding: 0.65rem 0.75rem;
+    font-size: 0.82rem;
+    min-height: 44px;
   }
-  .segmented-grid {
-    grid-template-columns: 1fr;
+
+  .agreement-card {
+    padding: 0.75rem 0.85rem;
+    margin-bottom: 1rem;
   }
+
+  .agreement-card-text {
+    font-size: 0.76rem;
+    line-height: 1.6;
+  }
+
+  .checkbox-agree {
+    font-size: 0.78rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .btn-submit-reg {
+    padding: 0.95rem;
+    min-height: 50px;
+    font-size: 0.95rem;
+  }
+
+  /* Success Receipt Card */
+  .receipt-card {
+    padding: 1.25rem 0.85rem;
+    border-radius: var(--radius-lg);
+  }
+
+  .receipt-crest {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 0.75rem;
+  }
+
+  .receipt-code-box {
+    padding: 0.6rem 1rem;
+    width: 100%;
+    margin: 1rem 0;
+  }
+
+  .receipt-code-value {
+    font-size: 1.2rem;
+  }
+
   .receipt-details-grid {
     grid-template-columns: 1fr;
+    gap: 0.55rem;
+    padding: 0.85rem;
+    font-size: 0.82rem;
   }
-  .round-top-row {
-    flex-direction: column;
+
+  /* Inquiry Tab */
+  .inquiry-card {
+    padding: 1.25rem 0.95rem;
+    border-radius: 14px;
   }
+
   .inquiry-search-bar {
     flex-direction: column;
+    gap: 0.6rem;
   }
+
+  .inquiry-input {
+    font-size: 16px;
+    min-height: 46px;
+  }
+
   .btn-inquiry-search {
-    padding: 0.8rem;
+    padding: 0.85rem;
     justify-content: center;
+    min-height: 46px;
+  }
+
+  /* Info / Guide Tab */
+  .info-accordion-grid {
+    grid-template-columns: 1fr;
+    gap: 0.85rem;
+  }
+
+  .info-feature-box {
+    padding: 1.15rem;
+    border-radius: 14px;
+  }
+
+  .info-feature-title {
+    font-size: 0.95rem;
+  }
+
+  .info-feature-text {
+    font-size: 0.8rem;
+  }
+
+  /* Footer */
+  .site-footer {
+    padding: 1.75rem 1rem 1.5rem;
+    font-size: 0.78rem;
+  }
+
+  .footer-crests {
+    gap: 0.5rem;
+    font-size: 0.78rem;
   }
 }
+
+/* Extra small mobile screens (<= 380px) */
+@media (max-width: 380px) {
+  .hero-title {
+    font-size: 1.2rem;
+  }
+  .brand-title-box h1 {
+    font-size: 0.8rem;
+  }
+  .tab-btn {
+    font-size: 0.72rem;
+    padding: 0.5rem 0.2rem;
+  }
+}
+

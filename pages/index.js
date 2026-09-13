@@ -341,12 +341,14 @@ export default function Home() {
                   }}
                 >
                   <Search size={14} />
-                  <span>پیگیری ثبت‌نام</span>
+                  <span className="desktop-only">پیگیری ثبت‌نام</span>
+                  <span className="mobile-only">پیگیری</span>
                 </button>
 
                 <Link href="/admin" className="btn-header-action">
                   <ShieldCheck size={14} />
-                  <span>ورود مسئولین</span>
+                  <span className="desktop-only">ورود مسئولین</span>
+                  <span className="mobile-only">مدیریت</span>
                 </Link>
               </div>
             </div>
@@ -357,9 +359,9 @@ export default function Home() {
         <div className="announcement-bar">
           <div className="max-content">
             <div className="announcement-inner">
-              <span className="announcement-tag">اطلاعیه مهم میناب</span>
+              <span className="announcement-tag">اطلاعیه اعزام میناب</span>
               <span>
-                همشهریان گرامی میناب: اولویت اعزام در دوره‌های پیش‌رو با کسانی است که زودتر ثبت‌نام کرده و دارای سن ۱۸ تا ۷۰ سال باشند.
+                اولویت کاروان‌های چایخانه با کسانی است که زودتر ثبت‌نام کرده و دارای سن ۱۸ تا ۷۰ سال باشند.
               </span>
             </div>
           </div>
@@ -373,29 +375,28 @@ export default function Home() {
             <div className="hero-content">
               <div className="hero-pill-badge">
                 <Sparkles size={16} />
-                <span>السلام علیک یا علی بن موسی الرضا المرتضی (ع)</span>
+                <span>السلام علیک یا علی بن موسی الرضا (ع)</span>
               </div>
 
               <h2 className="hero-title">
-                افتخار خدمتگزاری در <span>چایخانه بهشت</span>
+                افتخار خدمت در <span>چایخانه بهشت</span>
                 <br />
                 ویژه اهالی شریف شهرستان میناب
               </h2>
 
               <p className="hero-desc">
-                پذیرایی با چای متبرک از خیل عاشقان و زائران ولی‌نعمت‌مان حضرت ثامن‌الحجج (ع) در صحن‌های مطهر رضوی.
-                ثبت‌نام کاروان‌های اعزامی خادمیاران میناب به مشهد مقدس هم‌اکنون فعال است.
+                پذیرایی با چای متبرک رضوی از خیل عاشقان و زائران در صحن‌های مطهر حرم امام رضا (ع). اعزام کاروان‌های خادمیاران میناب هم‌اکنون فعال است.
               </p>
 
               {/* Stats Bar */}
               <div className="hero-metrics-bar">
                 <div className="hero-metric-item">
                   <div className="hero-metric-val">{totalRegisteredCount + 48}</div>
-                  <div className="hero-metric-label">خادم ثبت‌نام‌شده میناب</div>
+                  <div className="hero-metric-label">خادم ثبت‌نامی میناب</div>
                 </div>
                 <div className="hero-metric-item">
                   <div className="hero-metric-val">{openRounds.length}</div>
-                  <div className="hero-metric-label">دوره فعال اعزام</div>
+                  <div className="hero-metric-label">کاروان فعال اعزام</div>
                 </div>
                 <div className="hero-metric-item">
                   <div className="hero-metric-val">مشهد مقدس</div>
@@ -415,21 +416,24 @@ export default function Home() {
               onClick={() => setActiveTab('rounds')}
             >
               <Calendar size={16} />
-              <span>دوره‌های فعال خدمت</span>
+              <span className="desktop-only">دوره‌های فعال خدمت</span>
+              <span className="mobile-only">دوره‌ها</span>
             </button>
             <button
               className={`tab-btn ${activeTab === 'inquiry' ? 'active' : ''}`}
               onClick={() => setActiveTab('inquiry')}
             >
               <Search size={16} />
-              <span>استعلام و پیگیری</span>
+              <span className="desktop-only">استعلام و پیگیری</span>
+              <span className="mobile-only">پیگیری</span>
             </button>
             <button
               className={`tab-btn ${activeTab === 'guide' ? 'active' : ''}`}
               onClick={() => setActiveTab('guide')}
             >
               <Info size={16} />
-              <span>شرایط و ضوابط میناب</span>
+              <span className="desktop-only">شرایط و ضوابط میناب</span>
+              <span className="mobile-only">راهنمای اعزام</span>
             </button>
           </div>
 
@@ -827,6 +831,7 @@ export default function Home() {
               if (e.target === e.currentTarget) setSelectedRound(null)
             }}>
               <div className="reg-modal-box">
+                <div className="mobile-sheet-handle mobile-only"></div>
                 <div className="reg-modal-header">
                   <div>
                     <span style={{ fontSize: '0.78rem', color: 'var(--gold-dark)', fontWeight: 700 }}>
